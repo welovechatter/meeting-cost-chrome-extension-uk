@@ -1,46 +1,44 @@
 window.addEventListener('load', function() {
-    
-    
-    function findNode() {
-        var testContentOne = document.getElementsByClassName('CwaK9');
 
-        if(testContentOne != undefined) {
-            var testContentTwo = document.getElementsByClassName('RKLVef'); 
-            for (var i = 0, l = testContentTwo.length; i < l; i++) {
-                console.log(testContentTwo[i]);
-                testContentTwo[i].innerHTML = "TEST";
-            }
-        } else {
-            setTimeout(findNode(),1000)
-        }
-    }
+// observe every change to document.body
+const observer = new MutationObserver(() => {
+    updateDOM();
+  });
 
-    findNode();
+// update DOM if the right element is found
+function updateDOM() {
 
-}, false);
-
-
-// https://www.smashingmagazine.com/2019/04/mutationobserver-api-guide/
-
-
-// window.addEventListener('load', function() {
-
-// const observer = new MutationObserver(() => {
-//     sayHello();
-//   });
-
-// function sayHello() {
-//     if(document.getElementsByClassName('RveJvd.snByac')) {
-//         var testContent = document.getElementsByClassName('EfQccc')
-//         testContent[0].insertAdjacentHTML('beforeend',"HELLO");
-//         console.log("hello");
-//     }
-// }
-
-// const config = {
-//     childList: true,
-//     subtree: true,
-//   };
-//   observer.observe(document.body, config);
+  let guestsNumber = document.getElementsByClassName('smD7sb').length;  
+  let insertedElement = document.getElementById('meetingcostextension');
   
-// }, false);
+  // stop the function if the inserted is found or guest element isn't
+  if(insertedElement || guestsNumber == 0) {
+    return;
+  }
+    
+  // get the element to insert HTML next to
+  let guestArea = document.getElementById('xDetDlgAtt').getElementsByClassName('JAPzS');
+  
+  // // IN PROGRESS
+  let meetingTime = document.getElementById('xDetDlgWhen').getElementsByClassName('DN1TJ fX8Pqc CyPPBf');
+  console.log(meetingTime[0]);
+  // regex on that string  - look for regex.match
+  // https://jsfiddle.net/
+
+  // retrieve the hourly rate + insert DOM element
+  chrome.storage.local.get(["hourlyRate"], function(obj) {
+    let hourlyRate = 100;
+    if(obj.hourlyRate) { hourlyRate = obj.hourlyRate; }
+    if(document.getElementById('meetingcostextension')) { document.getElementById('meetingcostextension').remove(); }
+    guestArea[0].insertAdjacentHTML('beforeend',"<span id='meetingcostextension'> - this meeting will cost $"+hourlyRate*guestsNumber+"</div>");
+  });
+  
+}
+
+const config = {
+    childList: true,
+    subtree: true,
+  };
+  observer.observe(document.body, config);
+  
+}, false);
