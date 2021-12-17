@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="text-lg">
+    <div class="text-center mt-5">
+      <p class="p-5">Set the avg $ hourly rate for 1 employee (currently <b>$<span id="hourly-rate"></span></b>)</p>
+      <input id="input-rate" type="number" placeholder="50" class="py-1 mr-5 w-12 border border-solid focus:outline-none focus:ring-1 focus:ring-green-600 rounded-md">
+      <button id="button" class="py-1 px-5 bg-green-600 hover:bg-green-500 rounded-md text-white">Save</button>
+      <p class="pt-5">References:</p>
+      <p>$50,000/year = $24/hour</p>
+      <p>$75,000/year = $36/hour</p>
+      <p>$100,000/year = $48/hour</p>
+    </div>
+  </body>
+  <script src="options.js"></script>
+</html>
