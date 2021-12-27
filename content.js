@@ -8,8 +8,8 @@ const observer = new MutationObserver(() => {
 // update DOM if the right element is found
 function updateDOM() {
 
-  let guestsNumber = document.getElementsByClassName('smD7sb').length;  
-  let insertedElement = document.getElementById('meetingcostextension');
+  const guestsNumber = document.getElementsByClassName('smD7sb').length;  
+  const insertedElement = document.getElementById('meetingcostextension');
   
   // stop the function if the inserted is found or guest element isn't
   if(insertedElement || guestsNumber == 0) {
@@ -17,10 +17,10 @@ function updateDOM() {
   }
     
   // get the element to insert HTML next to
-  let guestArea = document.getElementById('xDetDlgAtt').getElementsByClassName('JAPzS');
+  const guestArea = document.getElementById('xDetDlgAtt').getElementsByClassName('JAPzS');
   
   // // IN PROGRESS
-  let meetingTime = document.getElementById('xDetDlgWhen').getElementsByClassName('DN1TJ fX8Pqc CyPPBf');
+  const meetingTime = document.getElementById('xDetDlgWhen').getElementsByClassName('DN1TJ fX8Pqc CyPPBf');
   console.log(meetingTime[0]);
   // regex on that string  - look for regex.match
   // https://jsfiddle.net/
