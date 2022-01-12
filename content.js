@@ -28,10 +28,7 @@ window.addEventListener(
         timezoneTwo,
       ] = meetingTime[0].outerHTML.match(
         /(\d+):(\d+)(am|pm|)\s[–]\s(\d+):(\d+)(am|pm|)/
-      );
-      // Q FOR EDWARD: How do I catch potential errors in the Regex? Right now it shows errors in the console when it fails
-      console.log("Regex extracted:" + wholematch);
-      
+      ); 
       let meetingLength;
 
       // TODO LATER: cover the cases when it starts pm and finish am BUT ALSO when it starts pm and finishes PM but >12 hours later
@@ -55,7 +52,7 @@ window.addEventListener(
           "beforeend",
           "<div id='meetingcostextension' class='DN1TJ fX8Pqc CyPPBf'>Meeting cost: $" +
           Math.round(minuteRate * meetingLength * guestsNumber) +
-            " (<span>update rate</span>)</div>"
+          `(<a style='text-decoration:underline;color:blue;' href='${chrome.runtime.getURL('options.html')}'>update rate</a>)</div>`
         );
       });
     }

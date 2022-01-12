@@ -12,6 +12,12 @@
     "48": "/images/logo48.png",
     "128": "/images/logo128.png"
   },
+  "web_accessible_resources": [
+    {
+      "resources": [ "options.html" ],
+      "matches": [ "https://calendar.google.com/*" ]
+    }
+  ],
   "options_page": "options.html",
   "content_scripts": [
     {
