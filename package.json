@@ -1,0 +1,25 @@
+{
+  "name": "meeting-cost-chrome-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "content.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "zip": "zip production.zip options.js options.html manifest.json content.js background.js images/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phb71/meeting-cost-chrome-extension.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phb71/meeting-cost-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/phb71/meeting-cost-chrome-extension#readme",
+  "devDependencies": {
+    "@edwmurph/eslint-config": "^2.0.0"
+  }
+}
