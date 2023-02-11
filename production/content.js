@@ -4,7 +4,6 @@ window.addEventListener(
     // observe every change to document.body
     const observer = new MutationObserver(() => {
       updateDOM();
-      console.log('1');
     });
 
     // update DOM if the right element is found
