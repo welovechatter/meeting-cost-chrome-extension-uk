@@ -4,21 +4,19 @@ window.addEventListener(
     // observe every change to document.body
     const observer = new MutationObserver(() => {
       updateDOM();
-      console.log('1');
     });
 
     // update DOM if the right element is found
     function updateDOM() {
-      const guestsNumber = document.getElementsByClassName('smD7sb').length;
+      if(document.getElementById('xDetDlgAtt')) {
+      const guestsNumber = document.getElementsByClassName('nBzcnc OjZ2cc mnlZ7 ptjCCb')[0].innerText.match(/^(.*?)guest/)[1];
       const insertedElement = document.getElementById('meetingcostextension');
-
       // stop the function if the inserted element already exists OR guest element isn't found
       if (insertedElement || guestsNumber == 0) {
         return;
       }
-
       // get the length of the meeting
-      const meetingTime = document.getElementById('xDetDlgWhen').getElementsByClassName('DN1TJ fX8Pqc CyPPBf');
+      const meetingTime = document.getElementById('xDetDlgWhen').getElementsByClassName('AzuXid O2VjS CyPPBf');
       const [
         ,
         firstHours,
@@ -39,10 +37,10 @@ window.addEventListener(
       } else if (timezoneOne == 'am' && secondHours != '12') {
         meetingLength = (parseInt(secondHours) + 12 ) * 60 + parseInt(secondMins) - firstHours * 60 - parseInt(firstMins);
       }
-      console.log(meetingLength);
+
       // retrieve the default/saved hourly rate AND insert DOM element
       chrome.storage.local.get(['hourlyRate'], function (obj) {
-        let minuteRate = 1.666666666666667;
+        let minuteRate = 0.8333;
         if (obj.hourlyRate) {
           minuteRate = (obj.hourlyRate)/60;
         }
@@ -50,13 +48,16 @@ window.addEventListener(
           document.getElementById('meetingcostextension').remove();
         }
         const guestArea = document.getElementsByClassName('agOyMd');
+        // class='DN1TJ fX8Pqc CyPPBf'
         guestArea[0].insertAdjacentHTML(
           'beforeend',
-          `<div id='meetingcostextension' class='DN1TJ fX8Pqc CyPPBf'>Meeting cost: <a style='text-decoration:underline;color:blue;' href='${chrome.runtime.getURL('options.html')}'>$` +
+          `<div id='meetingcostextension'>Meeting cost: <a style='text-decoration:underline;color:blue;' href='${chrome.runtime.getURL('options.html')}'>$` +
           Math.round(minuteRate * meetingLength * guestsNumber) +
           '</a></div>'
-        );
-      });
+        )
+        console.log(`Meeting lasts ${meetingLength} minutes with ${guestsNumber} guest(s), the hourly rate per guest is $${minuteRate * 60}`);
+      })
+      }
     }
 
     const config = {
