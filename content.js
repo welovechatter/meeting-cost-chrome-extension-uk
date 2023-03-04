@@ -51,7 +51,7 @@ window.addEventListener(
         // class='DN1TJ fX8Pqc CyPPBf'
         guestArea[0].insertAdjacentHTML(
           'beforeend',
-          `<div id='meetingcostextension'>Meeting cost: <a style='text-decoration:underline;color:blue;' href='${chrome.runtime.getURL('options.html')}'>$` +
+          `<div id='meetingcostextension' style="margin-top:8px">Meeting cost: <a style='text-decoration:underline;color:blue;' href='${chrome.runtime.getURL('options.html')}'>$` +
           Math.round(minuteRate * meetingLength * guestsNumber) +
           '</a></div>'
         )
