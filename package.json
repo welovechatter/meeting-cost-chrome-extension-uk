@@ -1,5 +1,5 @@
 {
-  "name": "meeting-cost-chrome-extension",
+  "name": "meeting-cost-chrome-extension-uk",
   "version": "1.0.0",
   "description": "",
   "main": "content.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phb71/meeting-cost-chrome-extension.git"
+    "url": "git+https://github.com/welovechatter/meeting-cost-chrome-extension-uk.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/phb71/meeting-cost-chrome-extension/issues"
+    "url": "https://github.com/welovechatter/meeting-cost-chrome-extension-uk/issues"
   },
-  "homepage": "https://github.com/phb71/meeting-cost-chrome-extension#readme",
+  "homepage": "https://github.com/welovechatter/meeting-cost-chrome-extension-uk#readme",
   "devDependencies": {
     "@edwmurph/eslint-config": "^2.0.0"
   }
