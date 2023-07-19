@@ -2,7 +2,7 @@
   "name": "Calendar Meeting Cost UK",
   "description": "See the £ cost of meetings in your Google calendar",
   "version": "1.0",
-  "manifest_version": 1,
+  "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
