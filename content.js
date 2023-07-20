@@ -9,7 +9,19 @@ window.addEventListener(
     // update DOM if the right element is found
     function updateDOM() {
       if(document.getElementById('xDetDlgAtt')) {
-      const guestsNumber = document.getElementsByClassName('nBzcnc OjZ2cc mnlZ7 ptjCCb')[0].innerText.match(/^(.*?)guest/)[1];
+      
+     // Original Guest Calculation
+     // const guestsNumber = document.getElementsByClassName('nBzcnc OjZ2cc mnlZ7 ptjCCb')[0].innerText.match(/^(.*?)guest/)[1];
+
+     // Revised to only count guests from @welovechatter.com
+     let guestsNumber = 0;
+     const guestsTmp = document.querySelector("div[jsname=MsyPn]");
+    
+        const regex = /data\-email\=[^\@]+@welovechatter.com/g;
+        let guestTmp2 = guestsTmp.innerHTML.match(regex);       
+        guestsNumber = (guestTmp2 || []).length;
+      
+
       const insertedElement = document.getElementById('meetingcostextension');
       // stop the function if the inserted element already exists OR guest element isn't found
       if (insertedElement || guestsNumber == 0) {
@@ -51,11 +63,11 @@ window.addEventListener(
         // class='DN1TJ fX8Pqc CyPPBf'
         guestArea[0].insertAdjacentHTML(
           'beforeend',
-          `<div id='meetingcostextension' style="margin-top:8px"><strong>Estimated meeting cost:</strong> <a style='text-decoration:underline;color:blue;' href='${chrome.runtime.getURL('options.html')}'>£` +
-          Math.round(minuteRate * meetingLength * guestsNumber) + ` (${guestsNumber} guests)` +
-          '</a></div>'
+          `<div id='meetingcostextension' style="margin-top:8px"><strong>Estimated meeting cost:</strong> <span style="color:blue; font-weight: bold;">£` +
+          Math.round(minuteRate * meetingLength * guestsNumber) + ` (${guestsNumber} Chatterinos)` +
+          '</span></div>'
         )
-        console.log(`Meeting lasts ${meetingLength} minutes with ${guestsNumber} guest(s), the hourly rate per guest is £${minuteRate * 60}`);
+        console.log(`Meeting lasts ${meetingLength} minutes with ${guestsNumber} Chatterino(s), the hourly rate per Chatterino is £${minuteRate * 60}`);
       })
       }
     }
