@@ -1,7 +1,7 @@
 let hourlyRate;
 
 chrome.storage.local.get(['hourlyRate'], function (obj) {
-  obj.hourlyRate ? (hourlyRate = obj.hourlyRate) : (hourlyRate = 50);
+  obj.hourlyRate ? (hourlyRate = obj.hourlyRate) : (hourlyRate = 33.21);
   updateCurrentRate();
 });
 

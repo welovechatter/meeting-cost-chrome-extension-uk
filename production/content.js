@@ -40,7 +40,7 @@ window.addEventListener(
 
       // retrieve the default/saved hourly rate AND insert DOM element
       chrome.storage.local.get(['hourlyRate'], function (obj) {
-        let minuteRate = 0.8333;
+        let minuteRate = 0.5535;
         if (obj.hourlyRate) {
           minuteRate = (obj.hourlyRate)/60;
         }
@@ -51,11 +51,11 @@ window.addEventListener(
         // class='DN1TJ fX8Pqc CyPPBf'
         guestArea[0].insertAdjacentHTML(
           'beforeend',
-          `<div id='meetingcostextension' style="margin-top:8px">Meeting cost: <a style='text-decoration:underline;color:blue;' href='${chrome.runtime.getURL('options.html')}'>$` +
-          Math.round(minuteRate * meetingLength * guestsNumber) +
+          `<div id='meetingcostextension' style="margin-top:8px"><strong>Estimated meeting cost:</strong> <a style='text-decoration:underline;color:blue;' href='${chrome.runtime.getURL('options.html')}'>£` +
+          Math.round(minuteRate * meetingLength * guestsNumber) + ` (${guestsNumber} guests)` +
           '</a></div>'
         )
-        console.log(`Meeting lasts ${meetingLength} minutes with ${guestsNumber} guest(s), the hourly rate per guest is $${minuteRate * 60}`);
+        console.log(`Meeting lasts ${meetingLength} minutes with ${guestsNumber} guest(s), the hourly rate per guest is £${minuteRate * 60}`);
       })
       }
     }
